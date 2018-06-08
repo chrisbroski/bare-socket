@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<title>WebSocket Chat Demo</title>
+<meta charset="utf-8">
+<style>
+#msg {}
+#chatbox {
+    border: 1px solid #000;
+    width: 480px;
+    height: 240px;
+    overflow: auto;
+}
+
+</style>
+
+<body>
+
+<p>This is a bare-bones simple web socket example.
+<input id="msg" placeholder="Socket message">
+<button type="button" onclick="send()">Send</button>
+<div id="chatbox""></div>
+
+<script>
+var WebSocket = WebSocket || MozWebSocket;
+var conn = new WebSocket("ws://localhost:6503");
+
+conn.onopen = function(e) {
+    console.log(e);
+};
+
+function send() {
+    conn.send(document.querySelector("#msg").value);
+    document.querySelector("#msg").value = "";
+}
+
+conn.onmessage = function(e) {
+    var disp = document.querySelector("#chatbox"),
+        p = document.createElement("p");
+    p.textContent = e.data;
+    disp.appendChild(p);
+};
+</script>
