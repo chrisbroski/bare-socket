@@ -4,21 +4,17 @@
 <title>WebSocket Chat Demo</title>
 <meta charset="utf-8">
 <style>
-#msg {}
 #chatbox {
     border: 1px solid #000;
     width: 480px;
     height: 240px;
     overflow: auto;
 }
-
 </style>
 
 <body>
 
 <h1>Bare Socket</h1>
-
-<p>This is a bare-bones simple web socket example.</p>
 
 <form onsubmit="return send()">
     <p>
@@ -37,12 +33,14 @@ conn.onopen = function(e) {
     console.log(e);
 };
 
+// Send a message to the server
 function send() {
     conn.send(document.querySelector("#msg").value);
     document.querySelector("#msg").value = "";
     return false;
 }
 
+// receive a message form the server
 conn.onmessage = function(e) {
     var disp = document.querySelector("#chatbox"),
         p = document.createElement("p");

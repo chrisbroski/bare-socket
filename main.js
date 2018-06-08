@@ -18,10 +18,10 @@ wsServer.on('connect', function(connection) {
 wsServer.on('request', function (request) {
     var connection = request.accept("", request.origin);
 
-    // This is how you send
+    // Send a message to the client
     connection.sendUTF("Successful connection to web socket server");
 
-    // This is how you receive
+    // Receive a message from the client
     connection.on('message', function(msg) {
         console.log("Received Message: " + msg.utf8Data);
     });
