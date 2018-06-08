@@ -16,9 +16,17 @@
 
 <body>
 
-<p>This is a bare-bones simple web socket example.
-<input id="msg" placeholder="Socket message">
-<button type="button" onclick="send()">Send</button>
+<h1>Bare Socket</h1>
+
+<p>This is a bare-bones simple web socket example.</p>
+
+<form onsubmit="return send()">
+    <p>
+        <input id="msg" placeholder="Socket message">
+        <button onclick="send()">Send</button>
+    </p>
+</form>
+
 <div id="chatbox""></div>
 
 <script>
@@ -32,6 +40,7 @@ conn.onopen = function(e) {
 function send() {
     conn.send(document.querySelector("#msg").value);
     document.querySelector("#msg").value = "";
+    return false;
 }
 
 conn.onmessage = function(e) {
