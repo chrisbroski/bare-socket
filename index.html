@@ -26,7 +26,6 @@
 <div id="chatbox""></div>
 
 <script>
-var WebSocket = WebSocket || MozWebSocket;
 var conn = new WebSocket("ws://localhost:6503");
 
 conn.onopen = function(e) {
