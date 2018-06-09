@@ -23,27 +23,26 @@
     </p>
 </form>
 
-<div id="chatbox""></div>
+<div id="chatbox"></div>
 
 <script>
-var conn = new WebSocket("ws://localhost:6503");
+var socket = new WebSocket("ws://" + location.host);
 
-conn.onopen = function(e) {
+socket.onopen = function(e) {
     console.log(e);
 };
 
 // Send a message to the server
 function send() {
-    conn.send(document.querySelector("#msg").value);
+    socket.send(document.querySelector("#msg").value);
     document.querySelector("#msg").value = "";
     return false;
 }
 
 // receive a message form the server
-conn.onmessage = function(e) {
-    var disp = document.querySelector("#chatbox"),
-        p = document.createElement("p");
+socket.onmessage = function(e) {
+    var p = document.createElement("p");
     p.textContent = e.data;
-    disp.appendChild(p);
+    document.querySelector("#chatbox").appendChild(p);
 };
 </script>
