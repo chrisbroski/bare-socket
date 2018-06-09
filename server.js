@@ -1,23 +1,19 @@
 const http = require('http');
 const fs = require('fs');
 const WebSocketServer = require('websocket').server;
-var server;
-var socketServer;
 
-function webServer(req, rsp) {
+const server = http.createServer(function (req, rsp) {
     rsp.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
     fs.createReadStream(__dirname + '/client.html').pipe(rsp);
-}
+});
 
-server = http.createServer(webServer);
+const socketServer = new WebSocketServer({
+    httpServer: server,
+    autoAcceptConnections: false
+});;
 
 server.listen(6503, function() {
     console.log((new Date()) + " Server is listening on port 6503");
-});
-
-socketServer = new WebSocketServer({
-    httpServer: server,
-    autoAcceptConnections: false
 });
 
 socketServer.on('connect', function(connection) {
