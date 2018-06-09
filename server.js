@@ -10,7 +10,7 @@ const server = http.createServer(function (req, rsp) {
 const socketServer = new WebSocketServer({
     httpServer: server,
     autoAcceptConnections: false
-});;
+});
 
 server.listen(6503, function() {
     console.log((new Date()) + " Server is listening on port 6503");
