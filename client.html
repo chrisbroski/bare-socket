@@ -4,12 +4,7 @@
 <title>WebSocket Chat Demo</title>
 <meta charset="utf-8">
 <style>
-#chatbox {
-    border: 1px solid #000;
-    width: 480px;
-    height: 240px;
-    overflow: auto;
-}
+#chatbox {border: 1px solid #000; width: 480px; height: 240px; overflow: auto; }
 </style>
 
 <body>
@@ -21,9 +16,8 @@
         <input id="msg" placeholder="Message to send">
         <button>Send</button>
     </p>
+    <div id="chatbox"></div>
 </form>
-
-<div id="chatbox"></div>
 
 <script>
 var socket = new WebSocket("ws://" + location.host);

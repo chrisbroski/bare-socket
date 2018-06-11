@@ -2,17 +2,17 @@ const http = require('http');
 const fs = require('fs');
 const WebSocketServer = require('websocket').server;
 
-const server = http.createServer(function (req, rsp) {
+const webServer = http.createServer(function (req, rsp) {
     rsp.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
     fs.createReadStream(__dirname + '/client.html').pipe(rsp);
 });
 
 const socketServer = new WebSocketServer({
-    httpServer: server,
+    httpServer: webServer,
     autoAcceptConnections: false
 });
 
-server.listen(6503, function() {
+webServer.listen(6503, function() {
     console.log((new Date()) + " Server is listening on port 6503");
 });
 
