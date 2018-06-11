@@ -1,14 +1,15 @@
 {
-  "name": "socket-native",
+  "name": "bare-socket",
+  "repository": "https://github.com/chrisbroski/bare-socket",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "Simple websocket server exmaple",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Chris Broski",
   "license": "ISC",
   "dependencies": {
-    "websocket": "^1.0.26"
+    "websocket": "latest"
   }
 }
